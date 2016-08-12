@@ -8,6 +8,6 @@ RUN apk upgrade --update && apk add \
 
 RUN rm -rf /var/cache/apk/*
 
-RUN chown -R www-data:www-data /var/www/html/
+RUN usermod -u 1000 www-data && usermod -G staff www-data
 
 CMD ["php-fpm"]
