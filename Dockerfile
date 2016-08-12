@@ -8,4 +8,6 @@ RUN apk upgrade --update && apk add \
 
 RUN rm -rf /var/cache/apk/*
 
+RUN chown -R www-data:www-data /var/www/html/
+
 CMD ["php-fpm"]
