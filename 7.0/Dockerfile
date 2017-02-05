@@ -6,4 +6,8 @@ RUN apk upgrade --update && apk --no-cache add \
 	&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
 	&& docker-php-ext-install -j$(nproc) gd
 
+RUN mkdir -p /usr/share/nginx/html && chown -R www-data:www-data /usr/share/nginx/html
+
+WORKDIR /usr/share/nginx/html
+
 CMD ["php-fpm"]
