@@ -1,8 +1,5 @@
 FROM php:7.1-fpm-alpine
 
-RUN addgroup -g 1000 -S www-data \
-	&& adduser -u 1000 -D -S -G www-data www-data
-
 RUN apk upgrade --update && apk --no-cache add \
     autoconf file g++ gcc binutils isl libatomic libc-dev musl-dev make re2c libstdc++ libgcc libcurl curl-dev binutils-libs mpc1 mpfr3 gmp libgomp coreutils freetype-dev libjpeg-turbo-dev libltdl libpng-dev openssl-dev libxml2-dev expat-dev \
     && docker-php-ext-install -j$(nproc) iconv mysqli pdo pdo_mysql curl bcmath mbstring json xml zip opcache \
